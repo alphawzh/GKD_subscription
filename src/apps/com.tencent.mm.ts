@@ -741,28 +741,25 @@ export default defineGkdApp({
       name: '分段广告-屏蔽服务号直播推荐',
       desc: '自动点击 不感兴趣 -> 不看此类直播 -> 确定',
       activityIds: ['com.tencent.mm.ui.brandservice.BrandServiceTimelineUI'],
+      actionCd: 3000,
       rules: [
         {
           key: 0,
           name: '点击不感兴趣',
           fastQuery: true,
-          actionDelay: 80, // 延时100ms等待UI响应
           matches: '[desc="不感兴趣"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
         {
-          preKeys: [0],
           key: 1,
           name: '点击不看此类直播',
-          actionDelay: 100, // 延时150ms等待UI响应
           matches: '[desc="不看此类直播"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
         {
-          preKeys: [1],
+          preKeys: [0, 1],
           key: 2,
           fastQuery: true,
-          actionDelay: 120, // 延时200ms等待UI响应
           name: '点击确定',
           matches: '[desc="确定"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
