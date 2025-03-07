@@ -746,6 +746,7 @@ export default defineGkdApp({
           key: 0,
           name: '点击不感兴趣',
           fastQuery: true,
+          actionDelay: 100, // 延时100ms等待UI响应
           matches: '[desc="不感兴趣"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
@@ -753,6 +754,7 @@ export default defineGkdApp({
           preKeys: [0],
           key: 1,
           name: '点击不看此类直播',
+          actionDelay: 100, // 延时100ms等待UI响应
           matches: '[desc="不看此类直播"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
@@ -760,7 +762,7 @@ export default defineGkdApp({
           preKeys: [1],
           key: 2,
           fastQuery: true,
-          actionDelay: 100,
+          actionDelay: 100, // 延时100ms等待UI响应
           name: '点击确定',
           matches: '[desc="确定"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
