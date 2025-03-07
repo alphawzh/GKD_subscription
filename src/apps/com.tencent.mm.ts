@@ -752,7 +752,7 @@ export default defineGkdApp({
         {
           preKeys: [0],
           key: 1,
-          actionDelay: 800, // 过早点击首次大概率跳不过
+          actionDelay: 300, // 过早点击首次大概率跳不过
           excludeMatches: [
             // 防止第三段出现确定时触发
             '[desc="确定"]',
