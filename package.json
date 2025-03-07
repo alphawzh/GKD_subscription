@@ -4,8 +4,8 @@
   "type": "module",
   "gkd": {
     "outDir": "dist",
-    "file": "AIsouler_gkd.json5",
-    "versionFile": "AIsouler_gkd.version.json5",
+    "file": "AlphaWzh_gkd.json5",
+    "versionFile": "AlphaWzh_gkd.version.json5",
     "changelog": "CHANGELOG.md",
     "README.md": "README.md"
   },

@@ -605,7 +605,7 @@ export default defineGkdApp({
             '[text="不感兴趣" || text="与我无关" || text="感谢你的反馈"][visibleToUser=true]',
           ],
           matches:
-            '@[clickable=true][visibleToUser=true] > TextView[text^="广告"][visibleToUser=true]', // 某些微信版本上该节点的`clickable=false`
+            '@[clickable=false][visibleToUser=true] > TextView[text^="广告"][visibleToUser=true]', // 某些微信版本上该节点的`clickable=false`
           exampleUrls: [
             'https://e.gkd.li/e73bb653-cc79-455c-958b-38aff6687c37',
             'https://e.gkd.li/5915f80b-66b9-4441-9d36-3caa3fe1be58',
@@ -629,7 +629,7 @@ export default defineGkdApp({
           // 第二段-有“关闭此广告”按钮，则直接关闭该广告
           preKeys: [0],
           key: 20,
-          matches: '[text="关闭此广告"][clickable=true][visibleToUser=true]',
+          matches: '[text="关闭此广告"][clickable=false][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/16796729', // 内容中部广告
             'https://i.gkd.li/i/17113565', // 在某些情况下，点击“不感兴趣”会导致无法执行下一步操作，因此点击“关闭此广告”
@@ -641,9 +641,9 @@ export default defineGkdApp({
           key: 25,
           excludeMatches: [
             '[text="感谢你的反馈"][visibleToUser=true]',
-            '[text="关闭此广告"][clickable=true][visibleToUser=true]',
+            '[text="关闭此广告"][clickable=false][visibleToUser=true]',
           ],
-          matches: '[text="不感兴趣"][clickable=true][visibleToUser=true]', // 为确保能够关闭尾部广告，此处点击“不感兴趣”而非“关闭此广告”
+          matches: '[text="不感兴趣"][clickable=false][visibleToUser=true]', // 为确保能够关闭尾部广告，此处点击“不感兴趣”而非“关闭此广告”
           snapshotUrls: [
             'https://i.gkd.li/i/16796666', // 内容尾部广告
             'https://i.gkd.li/i/16798661', // clickable=false，使用clickable=true避免误触
@@ -658,7 +658,7 @@ export default defineGkdApp({
           // 第三段
           preKeys: [25],
           key: 50,
-          matches: '[text="与我无关"][clickable=true][visibleToUser=true]',
+          matches: '[text="与我无关"][clickable=false][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/16796674', // 内容尾部广告
             'https://i.gkd.li/i/16796732', // 内容中部广告
@@ -735,6 +735,41 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
       ],
+    },
+    {
+      key: 40,
+      name: '分段广告-屏蔽服务号直播推荐',
+      desc: '自动点击 不感兴趣 -> 不看此类直播 -> 确定',
+      activityIds: ['com.tencent.mm.ui.brandservice.BrandServiceTimelineUI'],
+      rules: [
+        {
+          key: 0,
+          name: '点击“不感兴趣”',
+          fastQuery: true,
+          matches: '[desc="不感兴趣"][clickable=true]',
+          snapshotUrls: "https://i.gkd.li/i/18225086",
+        },
+        {
+          preKeys: [0],
+          key: 1,
+          excludeMatches: [
+            // 防止第三段出现时触发
+            '[desc="确定"]',
+          ],
+          name: '点击“不看此类直播”',
+          matches: '[desc="不看此类直播"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/18225086'
+        },
+        {
+          preKeys: [1],
+          key: 2,
+          fastQuery: true,
+          name: '点击“确定”',
+          matches: '[desc="确定"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/18225086'
+        }
+      ],
+
     },
   ],
 });
