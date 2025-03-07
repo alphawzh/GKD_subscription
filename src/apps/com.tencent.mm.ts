@@ -760,6 +760,7 @@ export default defineGkdApp({
           preKeys: [1],
           key: 2,
           fastQuery: true,
+          actionDelay: 100,
           name: '点击确定',
           matches: '[desc="确定"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
