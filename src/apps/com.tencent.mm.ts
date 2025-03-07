@@ -745,7 +745,6 @@ export default defineGkdApp({
         {
           key: 0,
           name: '点击不感兴趣',
-          actionCd: 1000,
           fastQuery: true,
           matches: '[desc="不感兴趣"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
@@ -753,10 +752,6 @@ export default defineGkdApp({
         {
           preKeys: [0],
           key: 1,
-          excludeMatches: [
-            // 防止第三段出现确定时触发
-            '[desc="确定"]',
-          ],
           name: '点击不看此类直播',
           matches: '[desc="不看此类直播"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
