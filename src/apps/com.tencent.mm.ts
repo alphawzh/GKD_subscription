@@ -744,7 +744,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          name: '点击“不感兴趣”',
+          name: '点击不感兴趣',
           fastQuery: true,
           matches: '[desc="不感兴趣"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
@@ -756,7 +756,7 @@ export default defineGkdApp({
             // 防止第三段出现确定时触发
             '[desc="确定"]',
           ],
-          name: '点击“不看此类直播”',
+          name: '点击不看此类直播',
           matches: '[desc="不看此类直播"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
@@ -764,7 +764,7 @@ export default defineGkdApp({
           preKeys: [1],
           key: 2,
           fastQuery: true,
-          name: '点击“确定”',
+          name: '点击确定',
           matches: '[desc="确定"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/18225086',
         },
