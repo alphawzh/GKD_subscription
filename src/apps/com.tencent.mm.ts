@@ -741,7 +741,7 @@ export default defineGkdApp({
       name: '分段广告-屏蔽服务号直播推荐',
       desc: '自动点击 不感兴趣 -> 不看此类直播 -> 确定',
       activityIds: ['com.tencent.mm.ui.brandservice.BrandServiceTimelineUI'],
-      actionCd: 3000,
+      actionCd: 500,
       rules: [
         {
           key: 0,
