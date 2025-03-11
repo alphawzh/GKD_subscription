@@ -15,27 +15,125 @@ export default defineGkdApp({
       ],
       rules: [
         {
+          key: -1,
+          fastQuery: true,
+          matches:
+            '@LinearLayout[clickable=true] > [text="广告" || text="廣告" || text="Sponsored"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/d1941064-d4e9-4bb2-99ab-ba30e0ce8126',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13000395',
+            'https://i.gkd.li/i/12905837',
+            'https://i.gkd.li/i/13791200',
+            'https://i.gkd.li/i/16568338',
+          ],
+        },
+        {
           key: 0,
-          name: '点击广告卡片右上角',
-          matches: '[text="广告"][clickable=true][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/15242828',
+          matches:
+            'RelativeLayout >5 LinearLayout[childCount=2] > TextView[text!=null] + LinearLayout[visibleToUser=true][clickable=true][childCount=0]',
+          snapshotUrls: 'https://i.gkd.li/i/14647413',
+        },
+        {
+          key: 1,
+          fastQuery: true,
+          position: {
+            left: 'width * 0.9223',
+            top: 'width * 0.0349',
+          },
+          matches: '@LinearLayout >2 [text="广告"][visibleToUser=false]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14783802',
+            'https://i.gkd.li/i/15531539',
+          ],
         },
 
         // 预留key
         // 第二段
         {
-          preKeys: [0],
+          preKeys: [-1, 0, 1],
           key: 25,
           name: '点击[关闭]',
-          anyMatches: [
-            '[text^="关闭"][clickable=true][visibleToUser=true]',
-            '@[clickable=true] > [text^="关闭"][clickable=false][visibleToUser=true]',
-          ],
+          fastQuery: true,
+          matches: '[text^="关闭"][clickable=true]',
           snapshotUrls: [
+            'https://i.gkd.li/i/12907642', // text="关闭该广告"
             'https://i.gkd.li/i/13926578', // text="关闭广告"
-            'https://i.gkd.li/i/15242827', // text="关闭该广告"
-            'https://i.gkd.li/i/18284569', // @[clickable=true] > [text^="关闭"][clickable=false]
+            'https://i.gkd.li/i/15531274',
           ],
+        },
+        {
+          preKeys: [-1, 0],
+          key: 26,
+          name: '点击[Close]',
+          fastQuery: true,
+          matches: '[text*="Close"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14207480',
+            'https://i.gkd.li/i/15137016',
+          ],
+        },
+        {
+          preKeys: [-1, 0],
+          key: 27,
+          name: '点击[關閉此廣告]',
+          fastQuery: true,
+          matches: '[text="關閉此廣告"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/13791202',
+        },
+        {
+          preKeys: [-1, 0, 1],
+          key: 28,
+          name: '点击[关闭该广告]',
+          fastQuery: true,
+          matches:
+            '@LinearLayout[index=1][clickable=true] <2 * < * - [text*="广告"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12642584',
+            'https://i.gkd.li/i/14647839',
+            'https://i.gkd.li/i/14783820',
+          ],
+        },
+        {
+          preKeys: [-1, 0],
+          key: 29,
+          name: '点击[Close the ad]',
+          fastQuery: true,
+          matches: '@LinearLayout[clickable=true] > [text*="Close"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12905838',
+            'https://i.gkd.li/i/15284966',
+          ],
+        },
+
+        // 预留key
+        // 第三段
+        {
+          preKeys: [28],
+          key: 50,
+          name: '点击[关闭]',
+          matches: '[text*="关闭"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12663984',
+            'https://i.gkd.li/i/14647940',
+            'https://i.gkd.li/i/14783534',
+          ],
+        },
+        {
+          preKeys: [29],
+          key: 51,
+          name: '点击"Close"',
+          matches: '[text="Close"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/12905846',
+        },
+
+        // 预留key
+        // 第四段
+        {
+          preKeys: [50],
+          key: 75,
+          name: '点击[确认]',
+          matches: '[text="确认"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/14647940',
         },
       ],
     },
@@ -643,7 +741,7 @@ export default defineGkdApp({
       name: '分段广告-屏蔽服务号直播推荐',
       desc: '自动点击 不感兴趣 -> 不看此类直播 -> 确定',
       activityIds: ['com.tencent.mm.ui.brandservice.BrandServiceTimelineUI'],
-      actionCd: 500,
+      actionCd: 1000,
       rules: [
         {
           key: 0,
